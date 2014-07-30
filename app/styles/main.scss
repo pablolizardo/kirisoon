@@ -1,0 +1,521 @@
+//$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+// bower:scss
+// endbower
+
+/* ::::::::::::::::::::::::: variables/mixins ::::::::::::::::::::::::::: */
+
+/* paleta nueva */
+$cCyan : #0dcdc0;
+$cCyanDark : #0ead99;
+
+$cVerde : #a7d163;
+$cVerdeDark : #27ae61;
+
+$cAmarillo : #fbcf62;
+$cAmarilloDark : #f9c82d;
+
+$cNaranja : #e5ba5b;
+$cNaranjaDark : #e3a711;
+
+$cRojo: #ff6f6f;
+$cRojoDark: #d13f4a;
+
+$cRosa: #d49f99;
+$cRosaDark: #745260;
+
+$cTomateLight: #fe7d60;
+$cTomate: #e84b3a;
+$cTomateDark: #c1392b;
+
+$cAzul : #3598db;
+$cAzulDark : #297fb8;
+
+$cIndigo: #48647c;
+$cIndigoDark: #2d3e50;
+
+$cVioleta: #b13f73;
+$cVioletaDark: #832d50;
+
+
+
+$cBlanco : #ffffff;
+$cGris : #dedede;
+$cGrisDark : #bec3c7;
+
+$cMarron: #69625c;
+
+$cNegro : #0b0d0f;
+$cCiruelon : #404048;
+
+$header-height : 105px;
+$footer-height : 75px; // antes 75px;
+
+/* extend */
+.bg-contain {   background-position: center center; background-repeat: no-repeat; background-size: contain; }
+.bg-cover {     background-position: center center; background-repeat: no-repeat; background-size: cover; }
+
+.sprite-kiriweb { background-image:     url('../images/sprites/sprite-kiriweb.png');    }
+.sprite-elenco  { background-image:     url('../images/sprites/sprite-elenco.png');     }
+.sprite-equipo  { background-image:     url('../images/sprites/sprite-equipo.png');     }
+.sprite-front   { background-image:     url('../images/sprites/sprite-front.png');      }
+
+/* mixins */
+/* para usar: .box { @include border-radius(10px); } */
+
+@mixin border-radius(    $radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+          // keeps background from busting out of border
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+}
+@mixin transform($transform){
+     -webkit-transform: $transform;
+         -ms-transform: $transform;
+        -moz-transform: $transform;
+          -o-transform: $transform;
+             transform: $transform;
+}
+
+@mixin transition(    $time:.2s) {
+  -webkit-transition: $time;
+     -moz-transition: $time;
+      -ms-transition: $time;
+          transition: $time;
+}
+@mixin text-shadow( $shadow:0 3px 0px rgba($cNegro, .4)){
+    -webkit-text-shadow: $shadow;
+       -moz-text-shadow: $shadow;
+         -o-text-shadow: $shadow;
+            text-shadow: $shadow;
+}
+
+@mixin box-shadow(      $shadow: 0px 3px 1px rgba($cNegro, .5) ){
+            box-shadow: $shadow;
+        -ms-box-shadow: $shadow;
+       -moz-box-shadow: $shadow;
+     -opera-box-shadow: $shadow;
+    -webkit-box-shadow: $shadow;
+}
+
+@mixin opacity (    $opacity: 0.5 ) {
+          opacity: $opacity;
+   -khtml-opacity: $opacity;
+     -moz-opacity: $opacity;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" $opacity * 100 ")";
+  filter: alpha(opacity= $opacity * 100 );
+}
+
+@mixin transform-origin($value: center center){
+    -webkit-transform-origin: $value;
+       -moz-transform-origin: $value;
+        -ms-transform-origin: $value;
+         -o-transform-origin: $value;
+            transform-origin: $value;
+}
+
+@mixin animation ($delay, $duration, $animation) {
+    -webkit-animation-delay: $delay;
+    -webkit-animation-duration: $duration;
+    -webkit-animation-name: $animation;
+    -webkit-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+    -moz-animation-delay: $delay;
+    -moz-animation-duration: $duration;
+    -moz-animation-name: $animation;
+    -moz-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+    -o-animation-delay: $delay;
+    -o-animation-duration: $duration;
+    -o-animation-name: $animation;
+    -o-animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $animation;
+    animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+}
+
+@mixin hide-text{
+    font: 0/0 a;
+    text-shadow: none;
+    color: transparent;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin blur($value:10px) {
+     -webkit-filter: blur($value);
+        -moz-filter: blur($value);
+          -o-filter: blur($value);
+         -ms-filter: blur($value);
+             filter: blur($value);
+}
+
+
+
+
+/* ::::::::::::::::::::::::: GLOBALS ::::::::::::::::::::::::::: */
+
+* { padding: 0; margin: 0; border: 0; }
+
+/* ::::::::::: FONTS ::::::::::: */
+
+@font-face { font-family: kiriFont; src: url(../fonts/KiriFont.ttf); }
+@font-face { font-family: McLaren; src: url(../fonts/McLaren-Regular.ttf); }
+
+$font-kiriFont  : kiriFont, "kiriFont", "KiriFont","HammersmithOne", "helvetica", "Helvetica", "Montserrat", sans-serif;
+$font-cursive   : McLaren, "McLaren", "McLaren-Regular","McLaren Pro", "Chelsea Market","FF Duper", sans-serif; 
+
+/* ::::::::::: FIN FONTS ::::::::::: */
+
+
+header, footer, h1, h2, h3, h4, h5, h6 {font-family: $font-kiriFont; }
+body {background-color: $cNegro; color: $cBlanco; } 
+a        {    color: $cBlanco; text-decoration:none !important; }
+a:hover  {    color: $cAmarillo; }
+a:active {    color: $cVerde; }
+hr {
+    // @include box-shadow();
+    // border: 1px solid $cIndigo;
+    // width: 80%;
+    // margin: 30px auto ;
+    @extend .sprite-kiriweb;
+    width: 255px;
+    height: 5px;
+    background-position: 0px -340px;
+    margin: 5px auto; padding: 0;  
+    border:0;  
+    //width:90%;
+}
+hr.indigo { background-position: 0px -345px; }
+hr.light { background-position: -255px -340px; }
+hr.cyan { background-position: -255px -345px; }
+
+html, body{
+    height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow-x: hidden; /* disable horizontal scrollbar */
+    padding:0px !important;
+
+}
+/* ::::::::::::::::::::::::: FIN: GLOBALS ::::::::::::::::::::::::::: */
+
+
+
+
+/* ::::::::::::::::::::::::: FOOTER ::::::::::::::::::::::::::: */
+footer {
+    position: fixed;
+    bottom: -90px;
+    left: 0;
+    z-index: 99;
+
+    width: 100%;
+    height: 65px;
+    background-color: rgba($cNegro,.8);
+    padding-top: 10px;
+     font-size: .75em;
+    #love {
+        padding: 6px 0 0 25px;
+    }
+
+
+    #gradient {
+        width: 100%;
+        height: 70px;
+        background-size: contain;
+        background-image: url('../images/gradient.png');
+        position: fixed;
+        bottom: 0;
+        left:0;
+        }
+    #social-fb ,#social-lv,  #social-tw, #social-yt {
+        @extend .sprite-kiriweb;
+        width:25px; height: 25px;
+        display:inline-block;
+        cursor: pointer;
+        margin-right: 3%;
+        margin-top: 2px;
+    }
+    #social-lv {
+                    background-position: -25px    -50px;
+        &:hover{    background-position: -0px    -50px; }
+    }
+    #social-fb {
+                    background-position: -75px   -50px;
+        &:hover{    background-position: -50px   -50px; }
+    }
+    #social-tw {
+                    background-position: -125px  -50px;
+        &:hover{    background-position: -100px  -50px; }
+    }
+    #social-yt {
+                    background-position: -175px  -50px;
+        &:hover{    background-position: -150px  -50px; }
+    }
+    
+}
+/* ::::::::::::::::::::::::: FIN: FOOTER ::::::::::::::::::::::::::: */
+
+
+.box-1{
+    background-image: url('../images/boxes/box_1.png');
+    background-size:  100% 100%;
+    background-repeat: no-repeat;
+    padding-top: 25px ;
+    padding-bottom: 5px ;
+}
+
+
+
+/* :::::::::::::: MEDIA QUERIES :::::::::::::::::::::::::::::::::::::::::::::::: */
+@media (max-width:768px) {
+    li .container { padding-top: 30px !important; padding-bottom:50px  !important; }
+}
+
+
+/* :::::::::::::: FIN: MEDIA QUERIES :::::::::::::::::::::::::::::::::::::::::::::::: */
+
+
+/* :::::::::::::: KEYFRAMES :::::::::::::::::::::::::::::::::::::::::::::::: */
+
+@include keyframes(welcome){
+    0%      {   @include opacity(0); @include transform(scale(.8)   rotate(5deg));}
+    75%     {   @include opacity(1); @include transform(scale(1.1)  rotate(-2deg));}
+    100%    {   @include opacity(1); @include transform(scale(1)    rotate(0deg));}
+}
+
+
+@include keyframes(auto){
+    0% {    left: -2000px;  @include opacity(1); }
+    30% {   left: 3000px;  @include opacity(0); }
+    100% {  left: 3000px; @include opacity(0); }
+}
+
+
+
+@include keyframes(bounce){
+    0%, 20%, 50%, 80%, 100% {   @include transform(    translateY(0)      );}
+                        40% {   @include transform(    translateY(-50px)  );}
+                        60% {   @include transform(    translateY(-30px)  );}
+}
+/* :::::::::::::: FIN: KEYFRAMES :::::::::::::::::::::::::::::::::::::::::::::::: */
+
+
+
+/* ::::::::::::::::::: TOOLTIP ::::::::::::::::::::::::::: */
+.tooltip-inner {
+    color: $cIndigo;
+    top:0;
+    font-family: $font-cursive;
+    background:none;
+    padding: 6px 15px 10px 16px;
+    margin-top: -5px! important;
+    font-size: 1.1em;
+
+}
+.tooltip {
+    background-image: url('../images/tooltip-bg.png');
+    background-size: 100% 100%;
+}
+.tooltip-arrow {
+    display:none;
+
+}
+
+/* ::::::::::::::::::: FIN : TOOLTIP ::::::::::::::::::::::::::: */
+
+
+
+/* iconos */
+
+.icon {
+    @extend .sprite-kiriweb;
+    width: 25px; height: 25px;
+    //border:1px solid red;
+    display: inline-block;
+    vertical-align: -10px;
+    margin:5px;
+    &.icon-sm {@include transform(scale(.75)); }
+}
+
+
+
+.icon-facebook       { background-position: -50px -50px; }
+.icon-facebook:hover { background-position: -50px -75px; }
+.icon-twitter        { background-position: -100px -50px; }
+.icon-twitter:hover  { background-position: -100px -75px; }
+.icon-youtube        { background-position: -150px -50px; }
+.icon-youtube:hover  { background-position: -150px -75px; }
+.icon-telefono       { background-position: -200px -50px; }
+.icon-telefono:hover { background-position: -200px -75px; }
+.icon-mail           { background-position: -100px -100px; }
+.icon-mail:hover     { background-position: -100px -125px; }
+.icon-lugar          { background-position: -150px -150px; }
+.icon-lugar:hover    { background-position: -150px -175px; }
+.icon-Dummy          { background-image: none; }
+
+
+.icon-down      {background-position: -125px -0px; &:hover { background-position: -125px -25px; } }
+.icon-up        {background-position: -25px -0px;  &:hover { background-position: -25px -25px;  } }
+.icon-left      {background-position: -175px -0px; &:hover { background-position: -175px -25px; } }
+.icon-right     {background-position: -75px -0px;  &:hover { background-position: -75px -25px;  } }
+.icon-mas       {background-position: -225px -0px; &:hover { background-position: -225px -25px; } }
+.icon-menos     {background-position: -275px -0px; &:hover { background-position: -275px -25px; } }
+.icon-zoom      {background-position: -325px -0px; &:hover { background-position: -325px -25px; } }
+
+/* txt-color */ 
+
+.text-azul { color: $cAzul;}
+.text-azulDark { color: $cAzulDark;}
+.text-cyan { color: $cCyan;}
+.text-cyanDark { color: $cCyanDark;}
+.text-Rojo { color: $cRojo;}
+.text-RojoDark { color: $cRojoDark;}
+.text-Naranja { color: $cNaranja;}
+.text-NaranjaDark { color: $cNaranjaDark;}
+.text-Verde { color: $cVerde;}
+.text-VerdeDark { color: $cVerdeDark;}
+.text-Amarillo { color: $cAmarillo;}
+.text-AmarilloDark { color: $cAmarilloDark;}
+
+
+/* scrollbar */
+
+::-webkit-scrollbar {width: 16px; height: 16px; z-index: 99999; }
+::-webkit-scrollbar-track {background: rgba($cNegro, 0.2); margin-top: 67px; margin-bottom: 65px; }
+::-webkit-scrollbar-thumb {background: rgba($cNegro, 0.7); }
+::-webkit-scrollbar-thumb:hover {background: rgba($cIndigo, 0.7); }
+::-webkit-scrollbar-thumb:active {background: rgba($cCyan, 0.7); }
+
+::-moz-scrollbar {width: 16px; height: 16px; z-index: 99999; }
+::-moz-scrollbar-track {background: rgba($cNegro, 0.2); margin-top: 67px; margin-bottom: 65px; }
+::-moz-scrollbar-thumb {background: rgba($cNegro, 0.7); }
+::-moz-scrollbar-thumb:hover {background: rgba($cIndigo, 0.7); }
+::-moz-scrollbar-thumb:active {background: rgba($cCyan, 0.7); }
+
+::-ms-scrollbar {width: 16px; height: 16px; z-index: 99999; }
+::-ms-scrollbar-track {background: rgba($cNegro, 0.2); margin-top: 67px; margin-bottom: 65px; }
+::-ms-scrollbar-thumb {background: rgba($cNegro, 0.7); }
+::-ms-scrollbar-thumb:hover {background: rgba($cIndigo, 0.7); }
+::-ms-scrollbar-thumb:active {background: rgba($cCyan, 0.7); }
+
+::-o-scrollbar {width: 16px; height: 16px; z-index: 99999; }
+::-o-scrollbar-track {background: rgba($cNegro, 0.2); margin-top: 67px; margin-bottom: 65px; }
+::-o-scrollbar-thumb {background: rgba($cNegro, 0.7); }
+::-o-scrollbar-thumb:hover {background: rgba($cIndigo, 0.7); }
+::-o-scrollbar-thumb:active {background: rgba($cCyan, 0.7); }
+
+::scrollbar {width: 16px; height: 16px; z-index: 99999; }
+::scrollbar-track {background: rgba($cNegro, 0.2); margin-top: 67px; margin-bottom: 65px; }
+::scrollbar-thumb {background: rgba($cNegro, 0.7); }
+::scrollbar-thumb:hover {background: rgba($cIndigo, 0.7); }
+::scrollbar-thumb:active {background: rgba($cCyan, 0.7); }
+
+
+body{
+    text-align: center;
+    @include text-shadow();
+}
+
+#logo{
+    position:absolute;
+    top:0; bottom: 0; left:0; right: 0;
+    margin:auto;
+    width: 80%;
+    height: 127px;
+    background-image: url('../images/logo_big.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#bg {
+    position: absolute;
+    top:0; bottom: 0; left:0; right: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/geriatricoDiaBlur.jpg');
+    @extend  .bg-cover;
+    @include opacity(.5);
+}
+
+#proximamente {
+    position:absolute;
+    top:-210px; bottom: 0; left:0; right: 0;
+    margin:auto;
+    width: 280px;
+    height: 40px;
+}
+#countdown {
+    position:absolute;
+    top:250px; bottom: 0; left:0; right: 0;
+    margin:auto;
+    width: 80%;
+    height: 60px;
+    font-family: $font-cursive;
+    font-size: 1.2em;
+    color: $cIndigo;
+    strong {
+        font-family: $font-kiriFont;
+        font-size: 1.3em;
+        color:$cBlanco;
+        
+        vertical-align: -3px;
+        font-weight: normal;
+    }
+    span:first-child{
+        margin-left: 0;
+    }
+    span {
+        margin: 10px;
+        display: inline-block;
+    }
+}
+
+
+.footer {
+    font-family: $font-kiriFont;
+    //font-size: .7em;
+    //height: 60px;
+    padding: 20px;
+    background: rgba($cNegro,.2);
+    width: 100%;
+    bottom:0;
+    left:0;
+    right: 0;
+    margin:0;
+    position: absolute;
+}
+
+.footer a {
+    display: inline-block;
+    margin: 8px 2%;
+}
+.footer a:hover { text-decoration: none; }
+.footer a:hover span { color: $cBlanco !important; }

@@ -1,0 +1,25 @@
+{
+  "name": "kirisoon",
+  "private": true,
+  "dependencies": {
+    "jquery.countdown": "~2.0.4"
+  },
+  "version": "0.1",
+  "homepage": "https://github.com/pablolizardo/bashscripts",
+  "description": "Proximamente Kiribati",
+  "main": "index.html",
+  "keywords": [
+    "kiribati"
+  ],
+  "authors": [
+    "Soki Studio"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
